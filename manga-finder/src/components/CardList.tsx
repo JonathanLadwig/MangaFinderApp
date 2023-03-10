@@ -45,11 +45,37 @@ const mangaList: IMangaCard[] = [
   manga2,
   manga1,
   manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
 ];
 
 function CardList() {
   return (
-    <div className="CardList bg-transparent h-auto w-screen grid grid-flow-row grid-cols-3 grid-rows-auto mt-16">
+    <div className="CardList bg-transparent h-auto w-screen grid grid-flow-row grid-rows-auto grid-cols-3 mt-8 sm:mt-12 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:mt-16">
       {mangaList.map((manga) => {
         return (
           <Card
