@@ -38,40 +38,7 @@ const manga2: IMangaCard = {
   availableTranslatedLanguages: ["en"],
 };
 
-const mangaList: IMangaCard[] = [
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-];
+const mangaList: IMangaCard[] = [manga1, manga2];
 
 function CardList() {
   return (

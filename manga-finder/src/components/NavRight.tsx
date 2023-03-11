@@ -4,7 +4,8 @@ function NavRight() {
       <img
         src="../src/assets/mega-icon-logo.png"
         alt="Logo"
-        className="logo w-8 h-8 mx-2 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
+        className="app-logo
+         w-8 h-8 mx-2 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
       />
       <h1 className="header hidden lg:block text-2xl">MangaFinder</h1>
       <div className="pages flex justify-around align-middle w-1/2">
