@@ -5,7 +5,7 @@ import Card from "./Card";
 const tag1: ITag = {
   id: "0",
   type: "genre",
-  name: "hentai",
+  name: "sliceoflife",
 };
 
 const tag2: ITag = {
@@ -42,7 +42,7 @@ const mangaList: IMangaCard[] = [manga1, manga2];
 
 function CardList() {
   return (
-    <div className="CardList bg-transparent h-auto w-screen grid grid-flow-row grid-rows-auto grid-cols-3 mt-8 sm:mt-12 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:mt-16">
+    <div className="CardList bg-transparent h-auto w-screen grid grid-flow-row grid-rows-auto grid-cols-3 mt-12 min-h-screen sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:mt-16">
       {mangaList.map((manga) => {
         return (
           <Card
@@ -54,9 +54,8 @@ function CardList() {
             year={manga.year}
             contentRating={manga.contentRating}
             tags={manga.tags}
-            availableTranslatedLanguages={
-              manga.availableTranslatedLanguages
-            }></Card>
+            availableTranslatedLanguages={manga.availableTranslatedLanguages}
+          ></Card>
         );
       })}
     </div>

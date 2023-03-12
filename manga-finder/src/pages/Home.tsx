@@ -2,11 +2,12 @@ import CardList from "../components/CardList";
 import NavBar from "../components/Navbar";
 
 function Home() {
-  // const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
+    <div className="home-page">
       <NavBar />
+      <div className="">Popular</div>
+      <CardList />
+      <div>Latest</div>
       <CardList />
     </div>
   );
