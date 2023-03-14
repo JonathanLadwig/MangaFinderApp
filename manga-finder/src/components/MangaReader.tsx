@@ -1,6 +1,7 @@
 import { IChapter, IChapterResponse } from "../models/IChapter";
 
 function MangaReader() {
+  //IChapterResponse request string below
   // https://api.mangadex.org/at-home/server/{chapter.id}
 
   const response: IChapterResponse = {
@@ -13,12 +14,16 @@ function MangaReader() {
 
   const chapterPages: string[] = chapter.data;
   return (
-    <div className="home-page">
+    <div className="manga-reader bg-dark w-auto h-auto">
       {chapterPages.map((page) => {
-        <img
-          src={"https://uploads.mangadex.org/data/" + chapter.hash + "/" + page}
-          alt={page.charAt(0)}
-        />;
+        return (
+          <img
+            src={
+              "https://uploads.mangadex.org/data/" + chapter.hash + "/" + page
+            }
+            alt={page.charAt(0)}
+          />
+        );
       })}
       ;
     </div>

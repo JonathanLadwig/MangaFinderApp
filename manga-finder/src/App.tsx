@@ -13,6 +13,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/browse" element={<Browse />} />
         <Route path="/browse:query" element={<Browse />} />
         <Route path="/library" element={<Library />} />
         <Route path="/manga/:mangaid" element={<Manga />} />
