@@ -11,7 +11,7 @@ const MangaCard = (props: IMangaCard) => {
   //loop that makes a new TagSquare foreach manga.tag
   return (
     <a
-      href={manga.id}
+      href={"manga/" + manga.id}
       className="mangacard rounded-lg bg-slate-100 m-4 relative w-24 h-36 xl:w-48 xl:h-72 sm:h-48 sm:w-32"
     >
       <img

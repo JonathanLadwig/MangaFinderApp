@@ -6,12 +6,11 @@ function SearchBar() {
   const targetRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  // const showSearchInput = isOpen;
-
   return (
     <motion.div>
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Search"
         className="nav-button bg-transparent rounded-full"
         id="search-button"
       >
