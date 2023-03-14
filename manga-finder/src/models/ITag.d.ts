@@ -1,4 +1,4 @@
-export interface ITag {
+export interface ITagResponse {
     id: string
     type: string
     attributes: ITagAttributes
@@ -10,4 +10,10 @@ export interface ITagAttributes {
     description: Description
     group: string
     version: number
+}
+
+export interface ITag {
+    id: string
+    type: string
+    name: string
 }

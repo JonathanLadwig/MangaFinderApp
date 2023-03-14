@@ -38,30 +38,38 @@ const manga2: IMangaCard = {
   availableTranslatedLanguages: ["en"],
 };
 
-const mangaList: IMangaCard[] = [manga1, manga2];
+const mangaList: IMangaCard[] = [
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+  manga1,
+  manga2,
+];
 
-function CardList() {
+function CardRow() {
   return (
-    <>
-      <button>Sort</button>
-      <div className="CardList bg-transparent h-auto w-screen grid grid-flow-row grid-rows-auto grid-cols-3 mt-12 min-h-screen sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:mt-16">
-        {mangaList.map((manga) => {
-          return (
-            <Card
-              id={manga.id}
-              title={manga.title}
-              imageUrl={manga.imageUrl}
-              description={manga.description}
-              status={manga.status}
-              year={manga.year}
-              contentRating={manga.contentRating}
-              tags={manga.tags}
-              availableTranslatedLanguages={manga.availableTranslatedLanguages}
-            ></Card>
-          );
-        })}
-      </div>
-    </>
+    <div className="CardList bg-transparent h-auto w-auto flex overflow-x-auto">
+      {mangaList.map((manga) => {
+        return (
+          <Card
+            id={manga.id}
+            title={manga.title}
+            imageUrl={manga.imageUrl}
+            description={manga.description}
+            status={manga.status}
+            year={manga.year}
+            contentRating={manga.contentRating}
+            tags={manga.tags}
+            availableTranslatedLanguages={manga.availableTranslatedLanguages}
+          ></Card>
+        );
+      })}
+    </div>
   );
 }
-export default CardList;
+export default CardRow;

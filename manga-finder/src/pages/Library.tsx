@@ -1,4 +1,3 @@
-import CardList from "../components/CardList";
 import NavBar from "../components/Navbar";
 
 function Library() {
@@ -7,7 +6,6 @@ function Library() {
   return (
     <div className="App">
       <NavBar />
-      <CardList />
     </div>
   );
 }

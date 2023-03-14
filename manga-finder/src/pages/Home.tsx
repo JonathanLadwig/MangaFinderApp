@@ -1,13 +1,14 @@
-import CardList from "../components/CardList";
+import CardRow from "../components/CardRow";
 import NavBar from "../components/Navbar";
 
 function Home() {
-  // const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
+    <div className="home-page">
       <NavBar />
-      <CardList />
+      <div className="mt-16 bg-dark w-screen">Popular</div>
+      <CardRow />
+      <div className="bg-dark w-screen">Latest</div>
+      <CardRow />
     </div>
   );
 }
