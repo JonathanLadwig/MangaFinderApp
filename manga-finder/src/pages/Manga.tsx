@@ -1,5 +1,4 @@
 import MangaPageInfo from "../components/MangaPageInfo";
-import NavBar from "../components/Navbar";
 import { IManga } from "../models/IManga";
 
 function getManga() {}
@@ -30,9 +29,8 @@ const manga: IManga = {
 
 function Manga() {
   return (
-    <div className="mangapage">
-      <NavBar />
-      <h1 className="mt-16">{"Manga"}</h1>
+    <>
+      <h1>{"Manga"}</h1>
       <MangaPageInfo
         id={manga.id}
         title={manga.title}
@@ -56,7 +54,7 @@ function Manga() {
         availableTranslatedLanguages={[]}
         latestUploadedChapter={""}
       />
-    </div>
+    </>
   );
 }
 

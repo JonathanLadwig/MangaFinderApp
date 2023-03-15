@@ -2,7 +2,7 @@ export interface ITagResponse {
     id: string
     type: string
     attributes: ITagAttributes
-    // relationships: any[]
+    relationships: Relationship[]
 }
 
 export interface ITagAttributes {
@@ -16,4 +16,14 @@ export interface ITag {
     id: string
     type: string
     name: string
+}
+
+interface Relationship {
+    id: string
+    type: string
+}
+
+export interface Description {
+    en: string
+    es?: string
 }

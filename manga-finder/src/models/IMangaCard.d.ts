@@ -1,7 +1,7 @@
 export interface IMangaCard {
     id: string
     title: string
-    imageUrl: string
+    coverFilename: string
     description: string
     status: string
     year: number

@@ -17,7 +17,7 @@ const tag2: ITag = {
 const manga1: IMangaCard = {
   id: "0",
   title: "Triese",
-  imageUrl: "https://i.imgur.com/hTmBaJL.jpeg",
+  coverFilename: "https://i.imgur.com/hTmBaJL.jpeg",
   description: "A scary manga",
   status: "Ongoing",
   year: 0,
@@ -29,7 +29,7 @@ const manga1: IMangaCard = {
 const manga2: IMangaCard = {
   id: "1",
   title: "Alice in Borderland",
-  imageUrl: "https://i.imgur.com/UsfSZvM.jpeg",
+  coverFilename: "https://i.imgur.com/UsfSZvM.jpeg",
   description: "An action manga",
   status: "Finished",
   year: 0,
@@ -53,13 +53,13 @@ const mangaList: IMangaCard[] = [
 
 function CardRow() {
   return (
-    <div className="CardList bg-transparent h-auto w-full flex overflow-scroll">
+    <div className="CardList bg-transparent h-auto flex flex-row overflow-x-scroll ">
       {mangaList.map((manga) => {
         return (
           <Card
             id={manga.id}
             title={manga.title}
-            imageUrl={manga.imageUrl}
+            coverFilename={manga.coverFilename}
             description={manga.description}
             status={manga.status}
             year={manga.year}

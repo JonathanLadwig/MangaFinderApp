@@ -1,13 +1,11 @@
 import CardRow from "../components/CardRow";
-import NavBar from "../components/Navbar";
 
 function Home() {
   return (
     <div className="home-page">
-      <NavBar />
-      <div className="mt-16 bg-dark w-screen">Popular</div>
+      <h2 className=" bg-dark w-full">Popular</h2>
       <CardRow />
-      <div className="bg-dark w-screen">Latest</div>
+      <h2 className="bg-dark w-full">Latest</h2>
       <CardRow />
     </div>
   );

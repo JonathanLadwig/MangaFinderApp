@@ -17,7 +17,15 @@ function SearchBar() {
     }
   };
 
-  function SearchButton() {
+  function searchLogic() {
+    if (isOpen) {
+      //searchquery
+    } else {
+      setIsOpen(false);
+    }
+  }
+
+  function searchButton() {
     if (isEmpty) {
       setIsOpen(!isOpen);
     } else {
@@ -28,7 +36,7 @@ function SearchBar() {
   return (
     <motion.div>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => searchLogic()}
         aria-label="Search"
         className="nav-button bg-transparent rounded-full"
         id="search-button"

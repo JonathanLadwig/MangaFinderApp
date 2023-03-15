@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import NavBar from "./components/Navbar";
 import "./index.css";
 import Browse from "./pages/Browse";
 import Error from "./pages/Error";
@@ -10,7 +11,8 @@ import Reader from "./pages/Reader";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <div className="w-full">
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
@@ -20,6 +22,9 @@ export default function App() {
         <Route path="/reader/:chapterid" element={<Reader />} />
         <Route path="*" element={<Error />} errorElement={<Error />} />
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
+
+//Use browser router in main.tsx
+//Failsafe if data doesn't load (404 for manga)

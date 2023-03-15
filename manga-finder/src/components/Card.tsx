@@ -9,21 +9,19 @@ function getMangaCover(title: string, id: string) {
 const MangaCard = (props: IMangaCard) => {
   const manga = props;
   //loop that makes a new TagSquare foreach manga.tag
+  //onclick navigate to link (useNavigate)
   return (
-    <a
-      href={"manga/" + manga.id}
-      className="mangacard rounded-lg bg-slate-100 m-4 relative w-24 h-36 xl:w-48 xl:h-72 sm:h-48 sm:w-32"
-    >
+    <div className="rounded-lg bg-slate-100 m-4 relative min-w-[6rem] h-36 sm:h-48 sm:min-w-[8rem] xl:min-w-[12rem] xl:h-72">
       <img
-        className="mangacover rounded-lg z-1 w-full h-full"
-        src={manga.imageUrl}
+        className="rounded-lg z-1 h-full w-full"
+        src={manga.coverFilename}
         alt={manga.title + "cover"}
       ></img>
-      <div className="MangaTitle text-neutral-50 w-full flex justify-center absolute bottom-0 z-2 bg-neutral-900/75 text-center p-1 rounded-b-lg">
+      <div className=" text-neutral-50 w-full flex justify-center absolute bottom-0 z-2 bg-neutral-900/75 text-center p-1 rounded-b-lg">
         <h2>{manga.title}</h2>
       </div>
-      <div className="MangaInfo absolute top-0">
-        <div className="TagLine flex w-2/3">
+      <div className="absolute top-0">
+        <div className="flex w-2/3">
           {/* For each loop for tags */}
           {manga.tags.map((tag) => {
             return (
@@ -36,7 +34,7 @@ const MangaCard = (props: IMangaCard) => {
           })}
         </div>
       </div>
-    </a>
+    </div>
   );
 };
 export default MangaCard;
