@@ -1,7 +1,7 @@
 import { IMangaCard } from "../models/IMangaCard";
 import TagSquare from "./TagSquare";
 
-function getImgUrl(title: string, id: string) {
+function getMangaCover(title: string, id: string) {
   let url: string = "https://i.imgur.com/hTmBaJL.jpeg";
   return url;
 }

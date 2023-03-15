@@ -53,7 +53,7 @@ const mangaList: IMangaCard[] = [
 
 function CardRow() {
   return (
-    <div className="CardList bg-transparent h-auto w-auto flex overflow-x-auto">
+    <div className="CardList bg-transparent h-auto w-full flex overflow-scroll">
       {mangaList.map((manga) => {
         return (
           <Card
