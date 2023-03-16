@@ -14,7 +14,13 @@ const MangaCard = (props: IMangaCard) => {
     <div className="rounded-lg bg-slate-100 m-4 relative min-w-[6rem] h-36 sm:h-48 sm:min-w-[8rem] xl:min-w-[12rem] xl:h-72">
       <img
         className="rounded-lg z-1 h-full w-full"
-        src={manga.coverFilename}
+        src={
+          "https://uploads.mangadex.org/covers/" +
+          manga.id +
+          "/" +
+          manga.coverFilename +
+          ".256.jpg"
+        }
         alt={manga.title + "cover"}
       ></img>
       <div className=" text-neutral-50 w-full flex justify-center absolute bottom-0 z-2 bg-neutral-900/75 text-center p-1 rounded-b-lg">

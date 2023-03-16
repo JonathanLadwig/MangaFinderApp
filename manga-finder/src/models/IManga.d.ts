@@ -2,7 +2,7 @@ export interface IManga {
     id: string
     title: string
     altTitles: string[]
-    description: Description
+    description: IMangaDescription
     isLocked: boolean
     links: string[]
     originalLanguage: string
@@ -25,20 +25,20 @@ export interface IManga {
 export interface IMangaResponse {
     result: string
     response: string
-    data: Data
+    data: IMangaData[]
 }
 
-export interface Data {
+export interface IMangaData {
     id: string
     type: string
-    attributes: Attributes
-    relationships: Relationship[]
+    attributes: IMangaAttributes
+    relationships: IMangaRelationship[]
 }
 
-export interface Attributes {
-    title: Title
-    altTitles: AltTitle[]
-    description: Description
+export interface IMangaAttributes {
+    title: IMangaTitle
+    altTitles: IMangaAltTitle[]
+    description: IMangaDescription
     isLocked: boolean
     links: Links
     originalLanguage: string
@@ -58,11 +58,11 @@ export interface Attributes {
     latestUploadedChapter: string
 }
 
-export interface Title {
+export interface IMangaTitle {
     en: string
 }
 
-export interface AltTitle {
+export interface IMangaAltTitle {
     "ja-ro"?: string
     ja?: string
     zh?: string
@@ -70,7 +70,7 @@ export interface AltTitle {
     "zh-ro"?: string
 }
 
-export interface Description {
+export interface IMangaDescription {
     en: string
     es?: string
 }
@@ -90,7 +90,18 @@ export interface Name {
     en: string
 }
 
-export interface Relationship {
+export interface IMangaRelationship {
     id: string
     type: string
+    attributes: IMangaRelationshipAttributes
+}
+
+export interface IMangaRelationshipAttributes {
+    description: string
+    volume: string
+    fileName: string
+    locale: string
+    createdAt: string
+    updatedAt: string
+    version: number
 }
