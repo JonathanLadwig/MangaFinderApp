@@ -6,6 +6,8 @@ export function getData(params: IParams) {
 
     const pagination: string = "&&limit=" + params.pages.limit + "&&offset=" + params.pages.offset;
     let orderUrl: string = "";
+    let filterUrl: string = "";
+    let searchUrl: string = "";
     if (params.order) {
         orderUrl = "&&order[" + params.order.type + "]=" + params.order.direction;
     }

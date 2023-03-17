@@ -19,7 +19,7 @@ function Home() {
 
   const latestOrder: IOrder = {
     type: "createdAt",
-    direction: "desc",
+    direction: "asc",
   };
 
   return (

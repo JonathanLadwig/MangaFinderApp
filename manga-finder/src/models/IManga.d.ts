@@ -1,10 +1,10 @@
 export interface IManga {
     id: string
     title: string
-    altTitles: string[]
+    altTitles?: IMangaAltTitle[]
     description: string
     isLocked: boolean
-    links: string[]
+    links?: Links[]
     originalLanguage: string
     lastVolume: string
     lastChapter: string
@@ -20,6 +20,7 @@ export interface IManga {
     version: number
     availableTranslatedLanguages: string[]
     latestUploadedChapter: string
+    coverFileName: string
 }
 
 export interface IMangaResponse {

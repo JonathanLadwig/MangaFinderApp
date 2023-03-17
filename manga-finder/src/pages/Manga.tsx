@@ -1,48 +1,68 @@
+import { useQuery } from "@tanstack/react-query";
+import { ChaoticOrbit } from "@uiball/loaders";
+import axios from "axios";
 import MangaPageInfo from "../components/MangaPageInfo";
-import { IManga } from "../models/IManga";
+import {
+  IMangaData,
+  IMangaRelationship,
+  IMangaRelationshipAttributes,
+  IMangaResponse,
+} from "../models/IManga";
 
-function getManga() {}
+function getManga(mangaID: string) {
+  console.log("https://api.mangadex.org" + mangaID + "?includes[]=cover_art");
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["chapterQuery"],
+    queryFn: () =>
+      axios
+        .get("https://api.mangadex.org" + mangaID + "?includes[]=cover_art")
+        .then((res) => res.data),
+  });
+  return { isLoading, error, data };
+}
 
-const manga: IManga = {
-  id: "",
-  title: "", //used
-  altTitles: [], //used
-  description: "", //used
-  isLocked: false,
-  links: [], //used
-  originalLanguage: "", //used
-  lastVolume: "", //used
-  lastChapter: "", //used
-  publicationDemographic: "",
-  status: "", //used
-  year: 0, //used
-  contentRating: "", //used
-  tags: [], //used
-  state: "",
-  chapterNumbersResetOnNewVolume: false,
-  createdAt: "", //used
-  updatedAt: "", //used
-  version: 0,
-  availableTranslatedLanguages: [], //used
-  latestUploadedChapter: "", //used
-};
+function getCoverFileName(mangaRelationship: IMangaRelationship[]): string {
+  let coverFilename: string = "";
+  let relationshipAttributes: IMangaRelationshipAttributes;
+  mangaRelationship.forEach((relationship) => {
+    if (relationship.type.includes("cover_art")) {
+      relationshipAttributes = relationship.attributes;
+      coverFilename = relationshipAttributes.fileName;
+    }
+  });
+  return coverFilename;
+}
 
 function Manga() {
+  const url: string = window.location.pathname;
+  const { isLoading, error, data } = getManga(url);
+
+  if (isLoading)
+    return (
+      <div className="flex h-screen w-screen flex-col justify-center align-middle content-center items-center">
+        <h2 className="text-2xl">Loading</h2>
+        <ChaoticOrbit size={35} color="#FFFFFF" />
+      </div>
+    );
+
+  if (error) return <h1>An error has occured</h1>;
+
+  const mangaResponse: IMangaResponse = data;
+  const manga: IMangaData[] = mangaResponse.data;
+
   return (
     <>
       <h1>{"Manga"}</h1>
       <MangaPageInfo
         id={manga.id}
-        title={manga.title}
-        altTitles={manga.altTitles}
-        description={manga.description}
-        isLocked={manga.isLocked}
-        links={manga.links}
-        originalLanguage={manga.originalLanguage}
-        lastVolume={manga.lastVolume}
-        lastChapter={manga.lastChapter}
-        publicationDemographic={manga.publicationDemographic}
-        status={manga.status}
+        title={manga.attributes.title.en}
+        description={manga.attributes.description.en}
+        isLocked={manga.attributes.isLocked}
+        originalLanguage={manga.attributes.originalLanguage}
+        lastVolume={manga.attributes.lastVolume}
+        lastChapter={manga.attributes.lastChapter}
+        publicationDemographic={manga.attributes.publicationDemographic}
+        status={manga.attributes.status}
         year={0}
         contentRating={""}
         tags={[]}
@@ -53,6 +73,7 @@ function Manga() {
         version={0}
         availableTranslatedLanguages={[]}
         latestUploadedChapter={""}
+        coverFileName={getCoverFileName(manga.relationships)}
       />
     </>
   );
