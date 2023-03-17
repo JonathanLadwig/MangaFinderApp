@@ -1,5 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { ChaoticOrbit } from "@uiball/loaders";
 import {
   IMangaAttributes,
   IMangaData,
@@ -9,21 +8,21 @@ import {
   IMangaResponse,
   IMangaTitle,
 } from "../models/IManga";
+import { IParams } from "../models/IParam";
 import { ITagResponse } from "../models/ITag";
+import { getData } from "../services/SearchQuery";
 import Card from "./Card";
 
-function CardList() {
-  const { isLoading, error, data, isFetching } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () =>
-      axios
-        .get(
-          "https://api.mangadex.org/manga?includes[]=cover_art&&limit=24&&offset=0"
-        )
-        .then((res) => res.data),
-  });
+function CardList(params: IParams) {
+  const { isLoading, error, data } = getData(params);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading)
+    return (
+      <div className="flex h-screen w-screen flex-col justify-center align-middle content-center items-center">
+        <h2 className="text-2xl">Loading</h2>
+        <ChaoticOrbit size={35} color="#FFFFFF" />
+      </div>
+    );
 
   if (error) return <h1>An error has occured</h1>;
 

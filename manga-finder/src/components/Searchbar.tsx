@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import CardRow from "./CardRow";
 
 function SearchBar() {
   const targetRef = useRef(null);
@@ -52,6 +53,7 @@ function SearchBar() {
           onChange={onChange}
         />
       )}
+      {!isEmpty && <CardRow />}
     </motion.div>
   );
 }

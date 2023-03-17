@@ -7,7 +7,7 @@ function MangaPageInfo(props: IManga) {
       <img
         src="https://i.imgur.com/hTmBaJL.jpeg"
         alt="Manga background"
-        className="manga-background w-screen h-16 mt-16 overflow-auto"
+        className="w-screen h-16 mt-16 overflow-auto"
       />
     </div>
   );

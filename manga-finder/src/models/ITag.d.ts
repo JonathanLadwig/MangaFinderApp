@@ -18,12 +18,12 @@ export interface ITag {
     name: string
 }
 
-interface Relationship {
+interface ITagRelationship {
     id: string
     type: string
 }
 
-export interface Description {
+export interface ITagDescription {
     en: string
     es?: string
 }

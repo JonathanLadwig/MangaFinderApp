@@ -1,71 +1,74 @@
-import { IMangaCard } from "../models/IMangaCard";
-import { ITag } from "../models/ITag";
+import { ChaoticOrbit } from "@uiball/loaders";
+import {
+  IMangaAttributes,
+  IMangaData,
+  IMangaDescription,
+  IMangaRelationship,
+  IMangaRelationshipAttributes,
+  IMangaResponse,
+  IMangaTitle,
+} from "../models/IManga";
+import { IParams } from "../models/IParam";
+import { ITagResponse } from "../models/ITag";
+import { getData } from "../services/SearchQuery";
 import Card from "./Card";
 
-const tag1: ITag = {
-  id: "0",
-  type: "genre",
-  name: "sliceoflife",
-};
+function CardRow(params: IParams) {
+  const { isLoading, error, data } = getData(params);
 
-const tag2: ITag = {
-  id: "1",
-  type: "genre",
-  name: "horror",
-};
+  if (isLoading)
+    return (
+      <div className="flex h-48 w-screen flex-col justify-center align-middle content-center items-center">
+        <h2 className="text-2xl">Loading</h2>
+        <ChaoticOrbit size={35} color="#FFFFFF" />
+      </div>
+    );
 
-const manga1: IMangaCard = {
-  id: "0",
-  title: "Triese",
-  coverFilename: "https://i.imgur.com/hTmBaJL.jpeg",
-  description: "A scary manga",
-  status: "Ongoing",
-  year: 0,
-  contentRating: "Suggestive",
-  tags: [tag1, tag2],
-  availableTranslatedLanguages: ["en"],
-};
+  if (error) return <h1>An error has occured</h1>;
 
-const manga2: IMangaCard = {
-  id: "1",
-  title: "Alice in Borderland",
-  coverFilename: "https://i.imgur.com/UsfSZvM.jpeg",
-  description: "An action manga",
-  status: "Finished",
-  year: 0,
-  contentRating: "Suggestive",
-  tags: [tag1, tag2],
-  availableTranslatedLanguages: ["en"],
-};
+  const mangaListResponse: IMangaResponse = data;
 
-const mangaList: IMangaCard[] = [
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-  manga1,
-  manga2,
-];
+  const mangaData: IMangaData[] = mangaListResponse.data;
 
-function CardRow() {
+  function getCoverFileName(mangaRelationship: IMangaRelationship[]): string {
+    let coverFilename: string = "";
+    let relationshipAttributes: IMangaRelationshipAttributes;
+    mangaRelationship.forEach((relationship) => {
+      if (relationship.type.includes("cover_art")) {
+        relationshipAttributes = relationship.attributes;
+        coverFilename = relationshipAttributes.fileName;
+      }
+    });
+    return coverFilename;
+  }
+
   return (
-    <div className="CardList bg-transparent h-auto flex flex-row overflow-x-scroll ">
-      {mangaList.map((manga) => {
+    <div className="bg-transparent h-auto flex flex-row overflow-x-scroll ">
+      {mangaData.map((manga) => {
+        const mangaAttributes: IMangaAttributes = manga.attributes;
+
+        const mangaRelationship: IMangaRelationship[] = manga.relationships;
+
+        const mangaTitle: IMangaTitle = mangaAttributes.title;
+
+        const mangaDescription: IMangaDescription = mangaAttributes.description;
+
+        const mangaTags: ITagResponse[] = mangaAttributes.tags;
+
+        const mangaCover: string = getCoverFileName(mangaRelationship);
         return (
           <Card
             id={manga.id}
-            title={manga.title}
-            coverFilename={manga.coverFilename}
-            description={manga.description}
-            status={manga.status}
-            year={manga.year}
-            contentRating={manga.contentRating}
-            tags={manga.tags}
-            availableTranslatedLanguages={manga.availableTranslatedLanguages}
+            title={mangaTitle.en}
+            coverFilename={mangaCover}
+            description={mangaDescription.en}
+            status={mangaAttributes.status}
+            year={mangaAttributes.year}
+            contentRating={mangaAttributes.contentRating}
+            tags={mangaTags}
+            availableTranslatedLanguages={
+              mangaAttributes.availableTranslatedLanguages
+            }
           ></Card>
         );
       })}

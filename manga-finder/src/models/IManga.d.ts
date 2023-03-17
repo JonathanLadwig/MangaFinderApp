@@ -2,7 +2,7 @@ export interface IManga {
     id: string
     title: string
     altTitles: string[]
-    description: IMangaDescription
+    description: string
     isLocked: boolean
     links: string[]
     originalLanguage: string

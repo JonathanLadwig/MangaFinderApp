@@ -1,17 +1,45 @@
+import { useNavigate } from "react-router-dom";
 import { IMangaCard } from "../models/IMangaCard";
+import { ITagResponse } from "../models/ITag";
 import TagSquare from "./TagSquare";
 
-function getMangaCover(title: string, id: string) {
-  let url: string = "https://i.imgur.com/hTmBaJL.jpeg";
-  return url;
-}
-
 const MangaCard = (props: IMangaCard) => {
+  let counter = 0;
+
   const manga = props;
+
+  const mangaTags: ITagResponse[] = manga.tags;
+
+  const navigate = useNavigate();
+
+  const clickHandler = () => {
+    return (event: React.MouseEvent) => {
+      console.log(manga.id);
+      navigate("/manga/" + manga.id);
+    };
+  };
+
+  function tagLooper(tag: ITagResponse) {
+    if (tag.attributes.group.includes("genre") && counter < 3) {
+      console.log(counter);
+      counter += 1;
+      return (
+        <TagSquare
+          id={tag.id}
+          type={tag.type}
+          name={tag.attributes.name.en}
+        ></TagSquare>
+      );
+    }
+  }
+
   //loop that makes a new TagSquare foreach manga.tag
   //onclick navigate to link (useNavigate)
   return (
-    <div className="rounded-lg bg-slate-100 m-4 relative min-w-[6rem] h-36 sm:h-48 sm:min-w-[8rem] xl:min-w-[12rem] xl:h-72">
+    <div
+      className="rounded-lg bg-slate-100 m-4 relative min-w-[6rem] w-24 h-36 sm:h-48 sm:min-w-[8rem] sm:w-32 xl:min-w-[12rem] xl:w-48 xl:h-72"
+      onClick={clickHandler()}
+    >
       <img
         className="rounded-lg z-1 h-full w-full"
         src={
@@ -27,16 +55,10 @@ const MangaCard = (props: IMangaCard) => {
         <h2>{manga.title}</h2>
       </div>
       <div className="absolute top-0">
-        <div className="flex w-2/3">
+        <div className="flex flex-col">
           {/* For each loop for tags */}
-          {manga.tags.map((tag) => {
-            return (
-              <TagSquare
-                id={tag.id}
-                type={tag.type}
-                name={tag.name}
-              ></TagSquare>
-            );
+          {mangaTags.map((tag) => {
+            return tagLooper(tag);
           })}
         </div>
       </div>

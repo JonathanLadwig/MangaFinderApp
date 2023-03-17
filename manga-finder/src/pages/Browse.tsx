@@ -1,11 +1,15 @@
 import CardList from "../components/CardList";
+import { IPagination } from "../models/IParam";
 
 function Browse() {
-  // const [count, setCount] = useState(0);
+  const paging: IPagination = {
+    limit: 60,
+    offset: 0,
+  };
 
   return (
     <div className="App">
-      <CardList />
+      <CardList pages={paging} />
     </div>
   );
 }

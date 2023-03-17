@@ -7,7 +7,7 @@ const manga: IManga = {
   id: "",
   title: "", //used
   altTitles: [], //used
-  description: undefined, //used
+  description: "", //used
   isLocked: false,
   links: [], //used
   originalLanguage: "", //used
