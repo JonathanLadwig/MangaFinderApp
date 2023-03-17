@@ -44,7 +44,6 @@ function CardList(params: IParams) {
 
   return (
     <>
-      <button>Sort</button>
       <div className="CardList bg-transparent h-auto w-screen grid grid-flow-row grid-rows-auto grid-cols-3 min-h-screen sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
         {mangaData.map((manga) => {
           const mangaAttributes: IMangaAttributes = manga.attributes;

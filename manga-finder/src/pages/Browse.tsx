@@ -8,7 +8,7 @@ function Browse() {
   };
 
   return (
-    <div className="App">
+    <div className="browse">
       <CardList pages={paging} />
     </div>
   );

@@ -4,7 +4,6 @@ export interface IParams {
     order?: IOrder
 }
 
-
 export interface IFilter {
     whiteList: string[]
     blackList: string[]

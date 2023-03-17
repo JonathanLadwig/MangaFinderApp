@@ -14,14 +14,12 @@ const MangaCard = (props: IMangaCard) => {
 
   const clickHandler = () => {
     return (event: React.MouseEvent) => {
-      console.log(manga.id);
       navigate("/manga/" + manga.id);
     };
   };
 
   function tagLooper(tag: ITagResponse) {
     if (tag.attributes.group.includes("genre") && counter < 3) {
-      console.log(counter);
       counter += 1;
       return (
         <TagSquare
