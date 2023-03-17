@@ -14,6 +14,8 @@ import { getData } from "../services/SearchQuery";
 import Card from "./Card";
 
 function CardRow(params: IParams) {
+  console.log(params);
+
   const { isLoading, error, data } = getData(params);
 
   if (isLoading)

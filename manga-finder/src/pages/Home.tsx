@@ -25,11 +25,11 @@ function Home() {
   return (
     <div className="home-page">
       <h2 className=" bg-dark w-full">Popular</h2>
-      <CardRow pages={paging} order={popOrder} />
+      <CardRow pages={paging} order={popOrder} qKey={"popularQuery"} />
       <h2 className=" bg-dark w-full">Top</h2>
-      <CardRow pages={paging} order={topOrder} />
+      <CardRow pages={paging} order={topOrder} qKey={"topQuery"} />
       <h2 className="bg-dark w-full">Latest</h2>
-      <CardRow pages={paging} order={latestOrder} />
+      <CardRow pages={paging} order={latestOrder} qKey={"latestQuery"} />
     </div>
   );
 }

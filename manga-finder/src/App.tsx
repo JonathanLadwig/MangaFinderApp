@@ -25,6 +25,6 @@ export default function App() {
     </div>
   );
 }
-
+//Store
 //Use browser router in main.tsx
 //Failsafe if data doesn't load (404 for manga)

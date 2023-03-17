@@ -9,7 +9,7 @@ function Browse() {
 
   return (
     <div className="browse">
-      <CardList pages={paging} />
+      <CardList qKey={"browseQuery"} pages={paging} />
     </div>
   );
 }

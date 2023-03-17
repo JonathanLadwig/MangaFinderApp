@@ -1,4 +1,5 @@
 export interface IParams {
+    qKey: string
     pages: IPagination
     filters?: IFilter
     order?: IOrder

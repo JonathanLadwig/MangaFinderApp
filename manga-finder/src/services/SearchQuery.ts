@@ -11,7 +11,7 @@ export function getData(params: IParams) {
     }
 
     const { isLoading, error, data } = useQuery({
-        queryKey: ["repoData"],
+        queryKey: [params.qKey],
         queryFn: () =>
             axios
                 .get(
