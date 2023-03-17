@@ -10,7 +10,6 @@ import {
 } from "../models/IManga";
 
 function getManga(mangaID: string) {
-  console.log("https://api.mangadex.org" + mangaID + "?includes[]=cover_art");
   const { isLoading, error, data } = useQuery({
     queryKey: ["chapterQuery"],
     queryFn: () =>

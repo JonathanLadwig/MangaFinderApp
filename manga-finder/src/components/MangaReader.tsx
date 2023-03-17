@@ -1,14 +1,32 @@
+import { ChaoticOrbit } from "@uiball/loaders";
 import { IChapter, IChapterResponse } from "../models/IChapter";
+import { getChapterPages } from "../services/HomeQueries";
 
 function MangaReader() {
   //IChapterResponse request string below
   // https://api.mangadex.org/at-home/server/{chapter.id}
 
-  const response: IChapterResponse = {
-    result: "",
-    baseUrl: "",
-    chapter: undefined,
-  };
+  function getChapterID() {
+    const chapterID = window.location.pathname.substring(
+      7,
+      window.location.pathname.length
+    );
+    console.log("ChapterID: " + chapterID);
+    return chapterID;
+  }
+  const { isLoading, error, data } = getChapterPages(getChapterID());
+
+  if (isLoading)
+    return (
+      <div className="flex h-screen w-screen flex-col justify-center align-middle content-center items-center">
+        <h2 className="text-2xl">Loading</h2>
+        <ChaoticOrbit size={35} color="#FFFFFF" />
+      </div>
+    );
+
+  if (error) return <h1>An error has occured</h1>;
+
+  const response: IChapterResponse = data;
 
   const chapter: IChapter = response.chapter;
 

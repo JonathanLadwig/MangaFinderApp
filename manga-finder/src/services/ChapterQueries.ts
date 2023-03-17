@@ -6,7 +6,7 @@ import axios from "axios";
 
 export function getChapterData(mangaID: string) {
     const { isLoading, error, data } = useQuery({
-        queryKey: ["chapterQuery"],
+        queryKey: [mangaID],
         queryFn: () =>
             axios
                 .get(
