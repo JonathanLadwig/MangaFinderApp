@@ -7,8 +7,17 @@ function MangaPageInfo(props: IManga) {
   const { isLoading, error, data } = getChapterData(props.id);
 
   function chapterLooper(chapter: IChapterListDaum) {
-    console.log("/reader/" + chapter.id);
-    return <a href={"/reader/" + chapter.id}>{chapter.attributes.title}</a>;
+    return (
+      <a
+        href={"/reader/" + chapter.id}
+        className=" text-white hover:text-theme"
+      >
+        {"Volume: " +
+          chapter.attributes.volume +
+          " Chapter: " +
+          chapter.attributes.chapter}
+      </a>
+    );
   }
 
   if (isLoading)
@@ -25,7 +34,16 @@ function MangaPageInfo(props: IManga) {
 
   const chapterListData: IChapterListDaum[] = chapterListReponse.data;
 
-  console.log(chapterListData);
+  const englishListData: IChapterListDaum[] = chapterListData.filter(
+    (chapter) => chapter.attributes.translatedLanguage.includes("en")
+  );
+
+  englishListData.sort((a, b) => {
+    return (
+      parseInt(a.attributes.volume) - parseInt(b.attributes.volume) ||
+      parseInt(a.attributes.chapter) - parseInt(b.attributes.chapter)
+    );
+  });
 
   const manga = props;
   return (
@@ -38,16 +56,15 @@ function MangaPageInfo(props: IManga) {
           manga.coverFileName
         }
         alt="Manga background"
-        className="w-screen h-16 mt-16"
+        className="w-screen h-16"
       />
       <h2>{manga.title}</h2>
       <p>{manga.description}</p>
-      <ol>
-        {chapterListData.map((chapter) => {
+      <ul className="flex flex-col text-gray-50">
+        {englishListData.map((chapter) => {
           return chapterLooper(chapter);
         })}
-        ;
-      </ol>
+      </ul>
     </div>
   );
 }

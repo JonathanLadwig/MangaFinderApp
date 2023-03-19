@@ -1,17 +1,13 @@
 import { ChaoticOrbit } from "@uiball/loaders";
 import { IChapter, IChapterResponse } from "../models/IChapter";
-import { getChapterPages } from "../services/HomeQueries";
+import { getChapterPages } from "../services/PageQueries";
 
 function MangaReader() {
-  //IChapterResponse request string below
-  // https://api.mangadex.org/at-home/server/{chapter.id}
-
   function getChapterID() {
     const chapterID = window.location.pathname.substring(
       7,
       window.location.pathname.length
     );
-    console.log("ChapterID: " + chapterID);
     return chapterID;
   }
   const { isLoading, error, data } = getChapterPages(getChapterID());
@@ -31,19 +27,23 @@ function MangaReader() {
   const chapter: IChapter = response.chapter;
 
   const chapterPages: string[] = chapter.data;
+
+  let counter = 1;
   return (
-    <div className="manga-reader bg-dark w-auto h-auto">
+    <div className="manga-reader bg-dark w-screen h-auto flex flex-col items-center">
       {chapterPages.map((page) => {
         return (
-          <img
-            src={
-              "https://uploads.mangadex.org/data/" + chapter.hash + "/" + page
-            }
-            alt={page.charAt(0)}
-          />
+          <>
+            <img
+              src={
+                "https://uploads.mangadex.org/data/" + chapter.hash + "/" + page
+              }
+              alt={page.charAt(0)}
+            />
+            <div>{counter++ + " of " + chapterPages.length}</div>
+          </>
         );
       })}
-      ;
     </div>
   );
 }

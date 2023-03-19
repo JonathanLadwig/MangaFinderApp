@@ -51,7 +51,6 @@ function Manga() {
 
   return (
     <>
-      <h1>{"Manga"}</h1>
       <MangaPageInfo
         id={manga.id}
         title={manga.attributes.title.en}
