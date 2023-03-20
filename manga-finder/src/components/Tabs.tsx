@@ -3,7 +3,7 @@ import { ImBook, ImHome } from "react-icons/im";
 
 function Tabs() {
   return (
-    <div className="pages flex justify-around align-middle w-1/2">
+    <div className="pages flex justify-evenly align-middle w-full">
       <div className="flex flex-row gap-0">
         <a
           href="/"

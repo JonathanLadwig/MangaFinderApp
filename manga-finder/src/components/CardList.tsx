@@ -72,6 +72,7 @@ function CardList(params: IParams) {
               availableTranslatedLanguages={
                 mangaAttributes.availableTranslatedLanguages
               }
+              altTitles={mangaAttributes.altTitles}
             ></Card>
           );
         })}

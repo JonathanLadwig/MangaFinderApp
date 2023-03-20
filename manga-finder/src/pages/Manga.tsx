@@ -47,7 +47,7 @@ function Manga() {
   if (error) return <h1>An error has occured</h1>;
 
   const mangaResponse: IMangaResponse = data;
-  const manga: IMangaData[] = mangaResponse.data;
+  const manga: IMangaData = mangaResponse.data;
 
   return (
     <>
@@ -61,16 +61,20 @@ function Manga() {
         lastChapter={manga.attributes.lastChapter}
         publicationDemographic={manga.attributes.publicationDemographic}
         status={manga.attributes.status}
-        year={0}
-        contentRating={""}
-        tags={[]}
-        state={""}
-        chapterNumbersResetOnNewVolume={false}
-        createdAt={""}
-        updatedAt={""}
-        version={0}
-        availableTranslatedLanguages={[]}
-        latestUploadedChapter={""}
+        year={manga.attributes.year}
+        contentRating={manga.attributes.contentRating}
+        tags={manga.attributes.tags}
+        state={manga.attributes.state}
+        chapterNumbersResetOnNewVolume={
+          manga.attributes.chapterNumbersResetOnNewVolume
+        }
+        createdAt={manga.attributes.createdAt}
+        updatedAt={manga.attributes.updatedAt}
+        version={manga.attributes.version}
+        availableTranslatedLanguages={
+          manga.attributes.availableTranslatedLanguages
+        }
+        latestUploadedChapter={manga.attributes.latestUploadedChapter}
         coverFileName={getCoverFileName(manga.relationships)}
       />
     </>

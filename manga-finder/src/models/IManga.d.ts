@@ -64,6 +64,7 @@ export interface IMangaTitle {
 }
 
 export interface IMangaAltTitle {
+    en?: string
     "ja-ro"?: string
     ja?: string
     zh?: string

@@ -1,6 +1,8 @@
+import { useMediaQuery } from "react-responsive";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/Navbar";
+import TabsBar from "./components/TabsBar";
 import "./index.css";
 import Browse from "./pages/Browse";
 import Error from "./pages/Error";
@@ -10,6 +12,7 @@ import Manga from "./pages/Manga";
 import Reader from "./pages/Reader";
 
 export default function App() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 600px)" });
   return (
     <div className="w-full">
       <NavBar />
@@ -22,6 +25,7 @@ export default function App() {
         <Route path="/reader/:chapterid" element={<Reader />} />
         <Route path="*" element={<Error />} errorElement={<Error />} />
       </Routes>
+      {isTabletOrMobile ? <TabsBar /> : null}
     </div>
   );
 }

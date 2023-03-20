@@ -1,5 +1,4 @@
 import { BsFilter } from "react-icons/bs";
-import { MdLogin } from "react-icons/md";
 import SearchBar from "./Searchbar";
 
 function NavLeft() {
@@ -12,13 +11,6 @@ function NavLeft() {
         id="filter-button"
       >
         <BsFilter />
-      </button>
-      <button
-        aria-label="Log In"
-        className="nav-button bg-transparent rounded-full"
-        id="login-button"
-      >
-        <MdLogin />
       </button>
     </div>
   );

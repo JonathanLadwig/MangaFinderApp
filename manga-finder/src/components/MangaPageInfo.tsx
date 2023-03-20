@@ -7,17 +7,28 @@ function MangaPageInfo(props: IManga) {
   const { isLoading, error, data } = getChapterData(props.id);
 
   function chapterLooper(chapter: IChapterListDaum) {
-    return (
-      <a
-        href={"/reader/" + chapter.id}
-        className=" text-white hover:text-theme"
-      >
-        {"Volume: " +
-          chapter.attributes.volume +
-          " Chapter: " +
-          chapter.attributes.chapter}
-      </a>
-    );
+    if (chapter.attributes.volume) {
+      return (
+        <a
+          href={"/reader/" + chapter.id}
+          className=" text-white hover:text-theme"
+        >
+          {"Volume: " +
+            chapter.attributes.volume +
+            " Chapter: " +
+            chapter.attributes.chapter}
+        </a>
+      );
+    } else {
+      return (
+        <a
+          href={"/reader/" + chapter.id}
+          className=" text-white hover:text-theme"
+        >
+          {"Chapter: " + chapter.attributes.chapter}
+        </a>
+      );
+    }
   }
 
   if (isLoading)
@@ -38,7 +49,7 @@ function MangaPageInfo(props: IManga) {
     (chapter) => chapter.attributes.translatedLanguage.includes("en")
   );
 
-  englishListData.sort((a, b) => {
+  chapterListData.sort((a, b) => {
     return (
       parseInt(a.attributes.volume) - parseInt(b.attributes.volume) ||
       parseInt(a.attributes.chapter) - parseInt(b.attributes.chapter)
@@ -46,6 +57,7 @@ function MangaPageInfo(props: IManga) {
   });
 
   const manga = props;
+
   return (
     <div className="mangapageinfo min-h-screen w-screen h-auto bg-dark">
       <img
@@ -56,15 +68,19 @@ function MangaPageInfo(props: IManga) {
           manga.coverFileName
         }
         alt="Manga background"
-        className="w-screen h-16"
+        className="w-screen h-auto -z-10 linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)"
       />
-      <h2>{manga.title}</h2>
-      <p>{manga.description}</p>
-      <ul className="flex flex-col text-gray-50">
-        {englishListData.map((chapter) => {
-          return chapterLooper(chapter);
-        })}
-      </ul>
+      <div className=" absolute top-12 lg:top-16 w-4/5 bg-neutral-900/75 ml-[10%] p-4 h-auto">
+        <h2 className=" text-xl">{manga.title || "MangaTitle"}</h2>
+        <br />
+        <p>{manga.description}</p>
+        <br />
+        <ul className="flex flex-col text-gray-50">
+          {chapterListData.map((chapter) => {
+            return chapterLooper(chapter);
+          })}
+        </ul>
+      </div>
     </div>
   );
 }

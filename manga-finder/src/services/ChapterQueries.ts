@@ -10,7 +10,7 @@ export function getChapterData(mangaID: string) {
         queryFn: () =>
             axios
                 .get(
-                    "https://api.mangadex.org/manga/" + mangaID + "/feed"
+                    "https://api.mangadex.org/manga/" + mangaID + "/feed?translatedLanguage[]=en&limit=500"
                 )
                 .then((res) => res.data),
     });

@@ -50,7 +50,7 @@ const MangaCard = (props: IMangaCard) => {
         alt={manga.title + "cover"}
       ></img>
       <div className=" text-neutral-50 w-full flex justify-center absolute bottom-0 z-2 bg-neutral-900/75 text-center p-1 rounded-b-lg">
-        <h2>{manga.title}</h2>
+        <h2 className=" text-sm">{manga.title || "No Title"}</h2>
       </div>
       <div className="absolute top-0">
         <div className="flex flex-col">
