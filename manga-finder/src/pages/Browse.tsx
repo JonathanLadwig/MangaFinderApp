@@ -4,7 +4,6 @@ import { IPagination } from "../models/IParam";
 
 function Browse() {
   const params = useParams();
-  console.log(params);
 
   const paging: IPagination = {
     limit: 60,

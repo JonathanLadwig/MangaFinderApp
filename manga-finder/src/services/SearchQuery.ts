@@ -13,7 +13,6 @@ export function getData(params: IParams) {
     }
     if (params.search) {
         searchUrl = "&&title=" + params.search;
-        console.log(searchUrl);
     }
 
     const { isLoading, error, data } = useQuery({

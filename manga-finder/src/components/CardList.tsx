@@ -34,7 +34,7 @@ function CardList(params: IParams) {
   return (
     <>
       <div className="CardList bg-transparent h-screen w-screen grid grid-flow-row grid-rows-auto grid-cols-3 min-h-screen sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 overflow-scroll">
-        {mangaData.map((manga) => {
+        {mangaData.map((manga, i) => {
           const mangaAttributes: IMangaAttributes = manga.attributes;
 
           const mangaRelationship: IMangaRelationship[] = manga.relationships;
@@ -50,6 +50,7 @@ function CardList(params: IParams) {
 
           return (
             <Card
+              key={i}
               id={manga.id}
               title={mangaTitle.en}
               coverFilename={mangaCover}

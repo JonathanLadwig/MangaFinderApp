@@ -1,26 +1,29 @@
 import { BsFillCompassFill } from "react-icons/bs";
-import { ImBook, ImHome } from "react-icons/im";
+import { ImHome } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
 
 function Tabs() {
+  const navigate = useNavigate();
+
   return (
     <div className="pages flex justify-evenly align-middle w-full">
       <div className="flex flex-row gap-0">
-        <a
-          href="/"
+        <button
+          onClick={() => navigate("/")}
           className="home-link text-light m-2 hover:text-dark text-xl sm:hidden"
         >
           <ImHome />
-        </a>
-        <a
-          href="/"
-          className="home-link text-dark text-base m-2 hidden sm:block hover:text-light"
+        </button>
+        <button
+          onClick={() => navigate("/")}
+          className="home-link text-light text-base m-2 hidden sm:block hover:text-dark"
         >
           Home
-        </a>
+        </button>
       </div>
-      <div className="flex flex-row gap-0">
+      {/* <div className="flex flex-row gap-0">
         <a
-          href="/library"
+          onClick={() => navigate("/library")}
           className="library-link text-dark m-2 hover:text-light text-xl sm:hidden"
         >
           <ImBook />
@@ -31,20 +34,20 @@ function Tabs() {
         >
           Library
         </a>
-      </div>
+      </div> */}
       <div className="flex flex-row gap-0">
-        <a
-          href="/browse"
-          className="browse-link text-dark m-2 hover:text-light text-xl sm:hidden"
+        <button
+          onClick={() => navigate("/browse")}
+          className="browse-link text-light m-2 hover:text-dark text-xl sm:hidden"
         >
           <BsFillCompassFill />
-        </a>
-        <a
-          href="/browse"
-          className="browse-link text-dark text-base m-2 hidden sm:block hover:text-light"
+        </button>
+        <button
+          onClick={() => navigate("/browse")}
+          className="browse-link text-light text-base m-2 hidden sm:block hover:text-dark"
         >
           Browse
-        </a>
+        </button>
       </div>
     </div>
   );

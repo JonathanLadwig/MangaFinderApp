@@ -17,7 +17,6 @@ function SearchBar() {
     } else {
       setIsEmpty(false);
       setSearch(e.currentTarget.value);
-      console.log(search);
     }
   };
 

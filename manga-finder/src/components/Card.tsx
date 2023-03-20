@@ -18,11 +18,12 @@ const MangaCard = (props: IMangaCard) => {
     };
   };
 
-  function tagLooper(tag: ITagResponse) {
+  function tagLooper(tag: ITagResponse, index: number) {
     if (tag.attributes.group.includes("genre") && counter < 3) {
       counter += 1;
       return (
         <TagSquare
+          key={index}
           id={tag.id}
           type={tag.type}
           name={tag.attributes.name.en}
@@ -55,8 +56,8 @@ const MangaCard = (props: IMangaCard) => {
       <div className="absolute top-0">
         <div className="flex flex-col">
           {/* For each loop for tags */}
-          {mangaTags.map((tag) => {
-            return tagLooper(tag);
+          {mangaTags.map((tag, i) => {
+            return tagLooper(tag, i);
           })}
         </div>
       </div>

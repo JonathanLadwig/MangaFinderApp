@@ -38,7 +38,7 @@ function CardRow(params: IParams) {
 
   return (
     <div className="bg-transparent h-auto flex flex-row overflow-x-scroll ">
-      {mangaData.map((manga) => {
+      {mangaData.map((manga, i) => {
         const mangaAttributes: IMangaAttributes = manga.attributes;
 
         const mangaRelationship: IMangaRelationship[] = manga.relationships;
@@ -52,6 +52,7 @@ function CardRow(params: IParams) {
         const mangaCover: string = getCoverFileName(mangaRelationship);
         return (
           <Card
+            key={i}
             id={manga.id}
             title={mangaTitle.en}
             coverFilename={mangaCover}

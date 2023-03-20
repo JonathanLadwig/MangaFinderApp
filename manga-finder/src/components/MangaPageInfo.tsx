@@ -9,11 +9,12 @@ function MangaPageInfo(props: IManga) {
 
   const navigate = useNavigate();
 
-  function chapterLooper(chapter: IChapterListDaum) {
+  function chapterLooper(chapter: IChapterListDaum, i: number) {
     return (
       <button
         onClick={() => navigate("/reader/" + chapter.id)}
         className=" col-span-4 md:col-span-2 lg:col-span-1 text-white bg-theme px-4 py-2 rounded-lg hover:bg-theme/80 transition-all duration-200 ease-in-out hover:shadow-md hover:shadow-white/10"
+        key={i}
       >
         {chapter.attributes.volume
           ? `Volume: ${chapter.attributes.volume} - Chapter: ${chapter.attributes.chapter}`
@@ -68,8 +69,8 @@ function MangaPageInfo(props: IManga) {
         <p>{manga.description}</p>
         <br />
         <ul className="grid grid-cols-4 text-gray-50 gap-4">
-          {chapterListData.map((chapter) => {
-            return chapterLooper(chapter);
+          {chapterListData.map((chapter, i) => {
+            return chapterLooper(chapter, i);
           })}
         </ul>
       </div>
