@@ -23,12 +23,12 @@ function Home() {
   };
 
   return (
-    <div className="home-page">
-      <h2 className=" bg-dark w-full">Popular</h2>
+    <div className="home-page mt-4">
+      <h2 className=" w-full ml-4 mt-4 text-3xl">Popular</h2>
       <CardRow pages={paging} order={popOrder} qKey={"popularQuery"} />
-      <h2 className=" bg-dark w-full">Top</h2>
+      <h2 className="w-full ml-4 text-3xl">Top</h2>
       <CardRow pages={paging} order={topOrder} qKey={"topQuery"} />
-      <h2 className="bg-dark w-full">Latest</h2>
+      <h2 className="w-full ml-4 text-3xl">Latest</h2>
       <CardRow pages={paging} order={latestOrder} qKey={"latestQuery"} />
     </div>
   );

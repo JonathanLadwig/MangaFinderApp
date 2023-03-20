@@ -1,21 +1,20 @@
 import { ChaoticOrbit } from "@uiball/loaders";
 import {
   IMangaAttributes,
+  IMangaCollectionResponse,
   IMangaData,
   IMangaDescription,
   IMangaRelationship,
-  IMangaRelationshipAttributes,
-  IMangaResponse,
   IMangaTitle,
 } from "../models/IManga";
+
 import { IParams } from "../models/IParam";
 import { ITagResponse } from "../models/ITag";
+import { getCoverFileName } from "../services/GetCoverFileName";
 import { getData } from "../services/SearchQuery";
 import Card from "./Card";
 
 function CardRow(params: IParams) {
-  console.log(params);
-
   const { isLoading, error, data } = getData(params);
 
   if (isLoading)
@@ -26,23 +25,16 @@ function CardRow(params: IParams) {
       </div>
     );
 
-  if (error) return <h1>An error has occured</h1>;
+  if (error)
+    return (
+      <p className="text-xl rounded-lg p-4 w-full text-center bg-slate-800">
+        An error has occured
+      </p>
+    );
 
-  const mangaListResponse: IMangaResponse = data;
+  const mangaListResponse: IMangaCollectionResponse = data;
 
   const mangaData: IMangaData[] = mangaListResponse.data;
-
-  function getCoverFileName(mangaRelationship: IMangaRelationship[]): string {
-    let coverFilename: string = "";
-    let relationshipAttributes: IMangaRelationshipAttributes;
-    mangaRelationship.forEach((relationship) => {
-      if (relationship.type.includes("cover_art")) {
-        relationshipAttributes = relationship.attributes;
-        coverFilename = relationshipAttributes.fileName;
-      }
-    });
-    return coverFilename;
-  }
 
   return (
     <div className="bg-transparent h-auto flex flex-row overflow-x-scroll ">

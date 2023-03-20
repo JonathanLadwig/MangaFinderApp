@@ -23,7 +23,13 @@ export interface IManga {
     coverFileName: string
 }
 
-export interface IMangaResponse {
+export interface IMangaEntityResponse {
+    result: string
+    response: string
+    data: IMangaData
+}
+
+export interface IMangaCollectionResponse {
     result: string
     response: string
     data: IMangaData[]

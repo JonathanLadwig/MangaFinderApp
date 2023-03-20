@@ -1,18 +1,23 @@
+import { useParams } from "react-router-dom";
 import CardList from "../components/CardList";
 import { IPagination } from "../models/IParam";
 
 function Browse() {
+  const params = useParams();
+  console.log(params);
+
   const paging: IPagination = {
     limit: 60,
     offset: 0,
   };
 
-  const url: string = window.location.pathname;
-  const searchString = url.split("/")[2];
-
   return (
     <div className="browse">
-      <CardList qKey={"browseQuery"} pages={paging} search={searchString} />
+      <CardList
+        qKey={"browseQuery" + params.query}
+        pages={paging}
+        search={params.query}
+      />
     </div>
   );
 }

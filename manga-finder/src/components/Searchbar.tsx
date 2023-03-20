@@ -14,20 +14,17 @@ function SearchBar() {
     setSearch(e.currentTarget.value);
     if (!search) {
       setIsEmpty(true);
-      console.log("empty");
     } else {
       setIsEmpty(false);
       setSearch(e.currentTarget.value);
-      console.log("not empty");
+      console.log(search);
     }
   };
 
   function searchLogic() {
     if (isOpen) {
-      console.log("searching");
       navigate("/browse/" + search);
     } else {
-      console.log("searching");
       setIsOpen(false);
     }
   }

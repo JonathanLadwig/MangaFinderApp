@@ -7,7 +7,7 @@ function Tabs() {
       <div className="flex flex-row gap-0">
         <a
           href="/"
-          className="home-link text-dark m-2 hover:text-light text-xl sm:hidden"
+          className="home-link text-light m-2 hover:text-dark text-xl sm:hidden"
         >
           <ImHome />
         </a>

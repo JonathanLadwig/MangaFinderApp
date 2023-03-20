@@ -1,4 +1,5 @@
 import { ChaoticOrbit } from "@uiball/loaders";
+import { useNavigate } from "react-router-dom";
 import { IChapterListDaum, IChapterListReponse } from "../models/IChaptersList";
 import { IManga } from "../models/IManga";
 import { getChapterData } from "../services/ChapterQueries";
@@ -6,29 +7,19 @@ import { getChapterData } from "../services/ChapterQueries";
 function MangaPageInfo(props: IManga) {
   const { isLoading, error, data } = getChapterData(props.id);
 
+  const navigate = useNavigate();
+
   function chapterLooper(chapter: IChapterListDaum) {
-    if (chapter.attributes.volume) {
-      return (
-        <a
-          href={"/reader/" + chapter.id}
-          className=" text-white hover:text-theme"
-        >
-          {"Volume: " +
-            chapter.attributes.volume +
-            " Chapter: " +
-            chapter.attributes.chapter}
-        </a>
-      );
-    } else {
-      return (
-        <a
-          href={"/reader/" + chapter.id}
-          className=" text-white hover:text-theme"
-        >
-          {"Chapter: " + chapter.attributes.chapter}
-        </a>
-      );
-    }
+    return (
+      <button
+        onClick={() => navigate("/reader/" + chapter.id)}
+        className=" col-span-4 md:col-span-2 lg:col-span-1 text-white bg-theme px-4 py-2 rounded-lg hover:bg-theme/80 transition-all duration-200 ease-in-out hover:shadow-md hover:shadow-white/10"
+      >
+        {chapter.attributes.volume
+          ? `Volume: ${chapter.attributes.volume} - Chapter: ${chapter.attributes.chapter}`
+          : `Chapter: ${chapter.attributes.chapter}`}
+      </button>
+    );
   }
 
   if (isLoading)
@@ -59,23 +50,24 @@ function MangaPageInfo(props: IManga) {
   const manga = props;
 
   return (
-    <div className="mangapageinfo min-h-screen w-screen h-auto bg-dark">
-      <img
-        src={
-          "https://uploads.mangadex.org/covers/" +
+    <div
+      className="mangapageinfo w-screen bg-dark bg-cover bg-no-repeat bg-center"
+      style={{
+        height: "calc(100vh - 3rem)",
+        backgroundImage: `url(${"https://uploads.mangadex.org/covers/" +
           manga.id +
           "/" +
-          manga.coverFileName
-        }
-        alt="Manga background"
-        className="w-screen h-auto -z-10 linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)"
-      />
-      <div className=" absolute top-12 lg:top-16 w-4/5 bg-neutral-900/75 ml-[10%] p-4 h-auto">
-        <h2 className=" text-xl">{manga.title || "MangaTitle"}</h2>
+          manga.coverFileName}) `,
+      }}
+    >
+      <div className=" absolute top-0 py-12 lg:pt-16 lg:pb-0 w-full bg-neutral-900/80 px-4 md:px-16 lg:px-32 h-screen overflow-y-scroll">
+        <h2 className=" mt-8 text-2xl lg:text-4xl font-bold">
+          {manga.title || "MangaTitle"}
+        </h2>
         <br />
         <p>{manga.description}</p>
         <br />
-        <ul className="flex flex-col text-gray-50">
+        <ul className="grid grid-cols-4 text-gray-50 gap-4">
           {chapterListData.map((chapter) => {
             return chapterLooper(chapter);
           })}

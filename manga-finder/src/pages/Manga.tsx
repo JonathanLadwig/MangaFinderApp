@@ -4,14 +4,14 @@ import axios from "axios";
 import MangaPageInfo from "../components/MangaPageInfo";
 import {
   IMangaData,
+  IMangaEntityResponse,
   IMangaRelationship,
   IMangaRelationshipAttributes,
-  IMangaResponse,
 } from "../models/IManga";
 
 function getManga(mangaID: string) {
   const { isLoading, error, data } = useQuery({
-    queryKey: ["chapterQuery"],
+    queryKey: [mangaID + "mangaQuery"],
     queryFn: () =>
       axios
         .get("https://api.mangadex.org" + mangaID + "?includes[]=cover_art")
@@ -46,7 +46,7 @@ function Manga() {
 
   if (error) return <h1>An error has occured</h1>;
 
-  const mangaResponse: IMangaResponse = data;
+  const mangaResponse: IMangaEntityResponse = data;
   const manga: IMangaData = mangaResponse.data;
 
   return (

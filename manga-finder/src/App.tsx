@@ -13,18 +13,22 @@ import Reader from "./pages/Reader";
 
 export default function App() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 600px)" });
+
   return (
     <div className="w-full">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/browse" element={<Browse />} />
-        <Route path="/browse/:query" element={<Browse />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/manga/:mangaid" element={<Manga />} />
-        <Route path="/reader/:chapterid" element={<Reader />} />
-        <Route path="*" element={<Error />} errorElement={<Error />} />
-      </Routes>
+      {/* <FilterBar /> */}
+      <div className="mt-12 lg:mt-16 mb-12 lg:mb-0">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/browse" element={<Browse />} />
+          <Route path="/browse/:query" element={<Browse />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/manga/:mangaid" element={<Manga />} />
+          <Route path="/reader/:chapterid" element={<Reader />} />
+          <Route path="*" element={<Error />} errorElement={<Error />} />
+        </Routes>
+      </div>
       {isTabletOrMobile ? <TabsBar /> : null}
     </div>
   );

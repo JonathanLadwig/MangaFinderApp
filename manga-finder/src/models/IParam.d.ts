@@ -3,7 +3,7 @@ export interface IParams {
     pages: IPagination
     filters?: IFilter
     order?: IOrder
-    search: string
+    search?: string
 }
 
 export interface IFilter {

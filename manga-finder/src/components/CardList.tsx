@@ -1,15 +1,15 @@
 import { ChaoticOrbit } from "@uiball/loaders";
 import {
   IMangaAttributes,
+  IMangaCollectionResponse,
   IMangaData,
   IMangaDescription,
   IMangaRelationship,
-  IMangaRelationshipAttributes,
-  IMangaResponse,
   IMangaTitle,
 } from "../models/IManga";
 import { IParams } from "../models/IParam";
 import { ITagResponse } from "../models/ITag";
+import { getCoverFileName } from "../services/GetCoverFileName";
 import { getData } from "../services/SearchQuery";
 import Card from "./Card";
 
@@ -24,27 +24,16 @@ function CardList(params: IParams) {
       </div>
     );
 
-  if (error) return <h1>An error has occured</h1>;
+  if (error)
+    return <p className="text-xl rounded-lg p-4">An error has occured</p>;
 
-  const mangaListResponse: IMangaResponse = data;
+  const mangaListResponse: IMangaCollectionResponse = data;
 
   const mangaData: IMangaData[] = mangaListResponse.data;
 
-  function getCoverFileName(mangaRelationship: IMangaRelationship[]): string {
-    let coverFilename: string = "";
-    let relationshipAttributes: IMangaRelationshipAttributes;
-    mangaRelationship.forEach((relationship) => {
-      if (relationship.type.includes("cover_art")) {
-        relationshipAttributes = relationship.attributes;
-        coverFilename = relationshipAttributes.fileName;
-      }
-    });
-    return coverFilename;
-  }
-
   return (
     <>
-      <div className="CardList bg-transparent h-auto w-screen grid grid-flow-row grid-rows-auto grid-cols-3 min-h-screen sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+      <div className="CardList bg-transparent h-screen w-screen grid grid-flow-row grid-rows-auto grid-cols-3 min-h-screen sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 overflow-scroll">
         {mangaData.map((manga) => {
           const mangaAttributes: IMangaAttributes = manga.attributes;
 
