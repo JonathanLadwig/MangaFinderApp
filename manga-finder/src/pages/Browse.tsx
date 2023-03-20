@@ -7,9 +7,12 @@ function Browse() {
     offset: 0,
   };
 
+  const url: string = window.location.pathname;
+  const searchString = url.split("/")[2];
+
   return (
     <div className="browse">
-      <CardList qKey={"browseQuery"} pages={paging} />
+      <CardList qKey={"browseQuery"} pages={paging} search={searchString} />
     </div>
   );
 }

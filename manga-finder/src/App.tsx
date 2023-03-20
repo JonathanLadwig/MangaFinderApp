@@ -19,7 +19,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
-        <Route path="/browse:query" element={<Browse />} />
+        <Route path="/browse/:query" element={<Browse />} />
         <Route path="/library" element={<Library />} />
         <Route path="/manga/:mangaid" element={<Manga />} />
         <Route path="/reader/:chapterid" element={<Reader />} />

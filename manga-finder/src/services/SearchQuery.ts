@@ -11,13 +11,16 @@ export function getData(params: IParams) {
     if (params.order) {
         orderUrl = "&&order[" + params.order.type + "]=" + params.order.direction;
     }
+    if (params.search) {
+        searchUrl = "&&title=" + params.search;
+    }
 
     const { isLoading, error, data } = useQuery({
         queryKey: [params.qKey],
         queryFn: () =>
             axios
                 .get(
-                    "https://api.mangadex.org/manga?includes[]=cover_art" + pagination + orderUrl
+                    "https://api.mangadex.org/manga?includes[]=cover_art" + pagination + searchUrl + orderUrl
                 )
                 .then((res) => res.data),
     });

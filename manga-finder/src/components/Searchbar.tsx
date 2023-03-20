@@ -1,25 +1,33 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const [search, setSearch] = useState("");
+  const [isEmpty, setIsEmpty] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  let isEmpty = true;
+
+  const navigate = useNavigate();
 
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
     if (!search) {
-      isEmpty = true;
+      setIsEmpty(true);
+      console.log("empty");
     } else {
-      isEmpty = false;
+      setIsEmpty(false);
+      setSearch(e.currentTarget.value);
+      console.log("not empty");
     }
   };
 
   function searchLogic() {
     if (isOpen) {
-      //searchquery
+      console.log("searching");
+      navigate("/browse/" + search);
     } else {
+      console.log("searching");
       setIsOpen(false);
     }
   }
@@ -28,29 +36,29 @@ function SearchBar() {
     if (isEmpty) {
       setIsOpen(!isOpen);
     } else {
-      SubmitEvent;
+      searchLogic();
     }
   }
 
   return (
     <motion.div>
       <button
-        // onClick={setIsOpen(!isOpen)}
-        // onClick={() => searchLogic()}
+        onClick={searchButton}
         aria-label="Search"
         className="nav-button bg-transparent rounded-full"
         id="search-button"
       >
         <BiSearch />
       </button>
-      {/* {isOpen && ( */}
-      <motion.input
-        type="text"
-        placeholder="Search"
-        id="searchinput"
-        className="search rounded-lg bg-slate-50 placeholder:italic text-neutral-800 min-w-12 w-auto"
-        onChange={onChange}
-      />
+      {isOpen && (
+        <motion.input
+          type="text"
+          placeholder="Search"
+          id="searchinput"
+          className="search rounded-lg bg-slate-50 placeholder:italic text-neutral-800 min-w-12 w-auto"
+          onChange={onChange}
+        />
+      )}
     </motion.div>
   );
 }
