@@ -1,8 +1,8 @@
+import Card from "../components/Card";
 import { IMangaData } from "../models/IManga";
 import { IPagination, IParams } from "../models/IParam";
 import { getCoverFileName } from "../services/GetCoverFileName";
 import { getData } from "../services/SearchQuery";
-import Card from "./Card";
 
 function searchResultsBar(searchString: string) {
   let pagination: IPagination = {

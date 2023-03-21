@@ -3,7 +3,7 @@ import axios from "axios";
 
 export function getChapterPages(chapterID: string) {
     const { isLoading, error, data } = useQuery({
-        queryKey: [chapterID],
+        queryKey: [chapterID + "PageQuery"],
         queryFn: () =>
             axios
                 .get(

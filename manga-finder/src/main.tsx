@@ -10,12 +10,9 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
     <BrowserRouter>
-      {/* Wrap store here */}
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
     </BrowserRouter>
   </StrictMode>
 );
-
-//within this add react.mode

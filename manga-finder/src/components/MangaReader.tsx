@@ -31,9 +31,9 @@ function MangaReader() {
   let counter = 1;
   return (
     <div className="manga-reader bg-dark w-screen h-auto flex flex-col items-center">
-      {chapterPages.map((page) => {
+      {chapterPages.map((page, i) => {
         return (
-          <>
+          <div key={i}>
             <img
               src={
                 "https://uploads.mangadex.org/data/" + chapter.hash + "/" + page
@@ -41,7 +41,7 @@ function MangaReader() {
               alt={page.charAt(0)}
             />
             <div>{counter++ + " of " + chapterPages.length}</div>
-          </>
+          </div>
         );
       })}
     </div>
@@ -49,4 +49,3 @@ function MangaReader() {
 }
 
 export default MangaReader;
-/* https://uploads.mangadex.org/data/3303dd03ac8d27452cce3f2a882e94b2/1-f7a76de10d346de7ba01786762ebbedc666b412ad0d4b73baa330a2a392dbcdd.png */
