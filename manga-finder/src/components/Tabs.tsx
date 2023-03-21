@@ -11,6 +11,7 @@ function Tabs() {
         <button
           onClick={() => navigate("/")}
           className="home-link text-light m-2 hover:text-dark text-xl sm:hidden"
+          aria-label="Home"
         >
           <ImHome />
         </button>
@@ -21,24 +22,11 @@ function Tabs() {
           Home
         </button>
       </div>
-      {/* <div className="flex flex-row gap-0">
-        <a
-          onClick={() => navigate("/library")}
-          className="library-link text-dark m-2 hover:text-light text-xl sm:hidden"
-        >
-          <ImBook />
-        </a>
-        <a
-          href="/library"
-          className="library-link text-dark text-base m-2 hidden sm:block hover:text-light"
-        >
-          Library
-        </a>
-      </div> */}
       <div className="flex flex-row gap-0">
         <button
           onClick={() => navigate("/browse")}
           className="browse-link text-light m-2 hover:text-dark text-xl sm:hidden"
+          aria-label="Browse Manga"
         >
           <BsFillCompassFill />
         </button>

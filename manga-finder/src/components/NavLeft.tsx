@@ -10,7 +10,7 @@ function NavLeft() {
       <SearchBar />
       <button
         aria-label="Filter results"
-        className="nav-button bg-transparent rounded-full"
+        className="nav-button bg-transparent rounded-full mx-4"
         id="filter-button"
         // onClick={(FilterBar(isOpen), setIsOpen(!isOpen))}
       >

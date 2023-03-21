@@ -37,11 +37,11 @@ function SearchBar() {
   }
 
   return (
-    <motion.div>
+    <motion.div className="flex">
       <button
         onClick={searchButton}
         aria-label="Search"
-        className="nav-button bg-transparent rounded-full"
+        className="nav-button bg-transparent rounded-full mr-2"
         id="search-button"
       >
         <BiSearch />
@@ -51,7 +51,7 @@ function SearchBar() {
           type="text"
           placeholder="Search"
           id="searchinput"
-          className="search rounded-lg bg-slate-50 placeholder:italic text-neutral-800 min-w-12 w-auto"
+          className="search rounded-lg bg-slate-50 placeholder:italic text-neutral-800 min-w-12 w-auto pl-2"
           onChange={onChange}
         />
       )}

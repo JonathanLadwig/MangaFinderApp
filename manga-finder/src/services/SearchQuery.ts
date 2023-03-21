@@ -8,7 +8,8 @@ export function getData(params: IParams) {
     let orderUrl: string = "";
     let filterUrl: string = "";
     let searchUrl: string = "";
-    if (params.order) {
+
+    if (params.order && params.order.type) {
         orderUrl = "&&order[" + params.order.type + "]=" + params.order.direction;
     }
     if (params.search) {

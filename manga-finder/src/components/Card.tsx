@@ -36,7 +36,7 @@ const MangaCard = (props: IMangaCard) => {
   //onclick navigate to link (useNavigate)
   return (
     <div
-      className="rounded-lg bg-slate-100 m-4 relative min-w-[6rem] w-24 h-36 sm:h-48 sm:min-w-[8rem] sm:w-32 xl:min-w-[12rem] xl:w-48 xl:h-72"
+      className="rounded-lg bg-slate-100 m-4 relative min-w-[8rem] w-32 h-48 xl:min-w-[12rem] xl:w-48 xl:h-72"
       onClick={clickHandler()}
     >
       <img
@@ -51,7 +51,7 @@ const MangaCard = (props: IMangaCard) => {
         alt={manga.title + "cover"}
       ></img>
       <div className=" text-neutral-50 w-full flex justify-center absolute bottom-0 z-2 bg-neutral-900/75 text-center p-1 rounded-b-lg">
-        <h2 className=" text-sm">{manga.title || "No Title"}</h2>
+        <h2 className=" text-sm line-clamp-2">{manga.title || "No Title"}</h2>
       </div>
       <div className="absolute top-0">
         <div className="flex flex-col">

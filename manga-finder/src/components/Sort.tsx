@@ -1,12 +1,26 @@
-import { useState } from "react";
+function SortBar({ childToParent }: { childToParent: (data: string) => void }) {
+  let data = "";
 
-function SortBar() {
-  const [isOpen, setIsOpen] = useState(false);
+  function setOrderType() {
+    const data = (document.getElementById("orderType") as HTMLInputElement)
+      .value;
+    childToParent(data);
+  }
 
   return (
-    <div className=" bg-gray-600 h-12 w-fullflex justify-between z-40 lg:h-16">
-      <button>Sort</button>
-      <form action=""></form>
+    <div className=" bg-dark h-6 w-fullflex justify-between z-40 sticky">
+      <label htmlFor="orderType">Order By: </label>
+      <select
+        name="orderType"
+        id="orderType"
+        onChange={setOrderType}
+        className=" text-dark bg-light"
+      >
+        <option value="">Relevance</option>
+        <option value="followedCount">Follows</option>
+        <option value="rating">Rating</option>
+        <option value="createdAt">Latest</option>
+      </select>
     </div>
   );
 }

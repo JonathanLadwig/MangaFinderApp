@@ -6,8 +6,9 @@ function FilterBar(isOpen: boolean) {
     love: false,
   });
 
-  const handleToggle = ({ target }) =>
-    setState((s) => ({ ...s, [target.name]: !s[target.name] }));
+  function handleToggle() {
+    console.log("hello");
+  }
 
   isOpen = false;
 
