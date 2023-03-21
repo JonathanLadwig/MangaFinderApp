@@ -1,13 +1,9 @@
+import SearchBar from "./Searchbar";
+
 function NavLeft() {
   return (
-    <div className="nav-left bg-blue-400 h-16 w-auto">
-      <input
-        type="text"
-        placeholder="Search"
-        className="search"
-      />
-      <button>Filter</button>
-      <button>Login</button>
+    <div className="nav-left h-full w-auto flex flex-row items-center justify-end">
+      <SearchBar />
     </div>
   );
 }

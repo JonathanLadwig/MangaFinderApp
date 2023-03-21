@@ -1,11 +1,19 @@
+import { useMediaQuery } from "react-responsive";
+import Tabs from "./Tabs";
+
 function NavRight() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 600px)" });
+
   return (
-    <div className="nav-right bg-red-400 h-16 w-1/2 flex flex-row">
-      <h1>Manga-Finder</h1>
-      <div className="pages flex justify-around align-middle">
-        <a href="#">Library</a>
-        <a href="#">Browse</a>
-      </div>
+    <div className="nav-right h-full w-auto flex flex-row items-center justify-between">
+      <img
+        src="../src/assets/mega-icon-logo.png"
+        alt="Logo"
+        className="app-logo
+         w-8 h-8 mx-2 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
+      />
+      <h1 className="header hidden lg:block text-2xl mr-4">MangaFinder</h1>
+      {isTabletOrMobile ? null : <Tabs />}
     </div>
   );
 }

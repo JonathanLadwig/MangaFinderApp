@@ -3,7 +3,7 @@ import NavRight from "./NavRight";
 
 function NavBar() {
   return (
-    <nav className="Navbar bg-slate-500 h-16 w-screen top-0 fixed flex justify-between z-40">
+    <nav className="Navbar bg-theme h-12 w-full top-0 left-0 absolute flex justify-between z-40 lg:h-16">
       <NavRight />
       <NavLeft />
     </nav>
