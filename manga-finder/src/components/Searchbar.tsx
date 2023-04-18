@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,12 @@ function SearchBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      navigate("/browse/" + search);
+    }
+  };
 
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
@@ -53,6 +59,7 @@ function SearchBar() {
           id="searchinput"
           className="search rounded-lg bg-slate-50 placeholder:italic text-neutral-800 min-w-12 w-auto pl-2 mr-2"
           onChange={onChange}
+          onKeyDown={handleKeyDown}
         />
       )}
     </motion.div>

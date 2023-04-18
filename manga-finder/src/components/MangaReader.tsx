@@ -40,7 +40,7 @@ function MangaReader() {
               }
               alt={page.charAt(0)}
             />
-            <div>{counter++ + " of " + chapterPages.length}</div>
+            {/* <div>{counter++ + " of " + chapterPages.length}</div> */}
           </div>
         );
       })}

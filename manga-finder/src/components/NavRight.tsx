@@ -12,8 +12,8 @@ function NavRight() {
         className="app-logo
          w-8 h-8 mx-3 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
       />
-      <h1 className="header lg:block text-2xl mr-4 font-bold">
-        Manga<span className=" text-neutral-800">Finder</span>
+      <h1 className="header lg:block text-xl mr-4 font-bold">
+        Manga<span className=" text-dark">Finder</span>
       </h1>
       {isTabletOrMobile ? null : <Tabs />}
     </div>

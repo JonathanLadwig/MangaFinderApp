@@ -12,7 +12,8 @@ module.exports = {
         xs: "480px",
       },
       colors: {
-        dark: "#424242",
+        dark: "#292B2B",
+        // dark: "#424242",
         light: "#F4FDFF",
         theme: "#fd5564",
       },
