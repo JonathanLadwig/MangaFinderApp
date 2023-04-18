@@ -16,6 +16,9 @@ module.exports = {
         light: "#F4FDFF",
         theme: "#fd5564",
       },
+      boxShadow: {
+        upShadow: "0px -1px 1px rgba(0, 0, 0, 0.05)",
+      },
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],

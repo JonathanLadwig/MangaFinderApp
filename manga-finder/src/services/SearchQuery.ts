@@ -21,7 +21,7 @@ export function getData(params: IParams) {
         queryFn: () =>
             axios
                 .get(
-                    "https://api.mangadex.org/manga?includes[]=cover_art" + pagination + searchUrl + orderUrl
+                    "https://api.mangadex.org/manga?includes[]=cover_art&contentRating[]=safe" + pagination + searchUrl + orderUrl
                 )
                 .then((res) => res.data),
     });

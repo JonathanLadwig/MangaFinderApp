@@ -7,12 +7,14 @@ function NavRight() {
   return (
     <div className="nav-right h-full w-auto flex flex-row items-center justify-between">
       <img
-        src="../src/assets/mega-icon-logo.png"
+        src="../src/assets/icon.png"
         alt="Logo"
         className="app-logo
-         w-8 h-8 mx-2 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
+         w-8 h-8 mx-3 sm:w-12 sm:h-12 lg:w-16 lg:h-16"
       />
-      <h1 className="header hidden lg:block text-2xl mr-4">MangaFinder</h1>
+      <h1 className="header lg:block text-2xl mr-4 font-bold">
+        Manga<span className=" text-neutral-800">Finder</span>
+      </h1>
       {isTabletOrMobile ? null : <Tabs />}
     </div>
   );

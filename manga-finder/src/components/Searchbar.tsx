@@ -51,7 +51,7 @@ function SearchBar() {
           type="text"
           placeholder="Search"
           id="searchinput"
-          className="search rounded-lg bg-slate-50 placeholder:italic text-neutral-800 min-w-12 w-auto pl-2"
+          className="search rounded-lg bg-slate-50 placeholder:italic text-neutral-800 min-w-12 w-auto pl-2 mr-2"
           onChange={onChange}
         />
       )}
